@@ -8,6 +8,7 @@
   --color-bg: var(--bg);
   --color-card-bg: var(--card-bg);
   --shadow-brand: var(--brand-shadow);
+  --color-turquesa: #29d6b9;
 }
 
 :root {
@@ -16,7 +17,7 @@
   --text-button: #fff;
   --bg-button: #29d6b9;
   --bg: #fff;
-  --card-bg: #aaa;
+  --card-bg: #f1f1f1;
   --brand-shadow: 0 0 20px -5px rgba(13, 51, 54, 0.2), 0 8px 15px -6px rgba(13, 51, 54, 0.2);
 }
 

@@ -18,18 +18,18 @@ function Header() {
     ];
 
     return (
-        <header className="fixed top-0 left-1/2 -translate-x-1/2 z-[1000] w-[calc(100%-2rem)] md:max-w-max ">
+        <header className="fixed top-0 left-1/2 -translate-x-1/2 z-1000 w-[calc(100%-2rem)] lg:max-w-max ">
 
             {/* Navbar principal */}
-            <nav className="relative mt-5 flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-card/70 px-5 py-3 text-(--text) shadow-brand backdrop-blur-md transition-all duration-300 md:px-10">
+            <nav className="relative mt-5 flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-card/70 px-5 py-3 text-(--text) shadow-brand backdrop-blur-md transition-all duration-300">
                 <img src={logoImg} alt="Logo" className="h-6 w-6 shrink-0"/>
                 <a  href="#home"
-                    className="hidden whitespace-nowrap text-sm font-semibold text-title md:block md:me-20 lg:me-90">
+                    className="hidden whitespace-nowrap text-sm font-semibold text-title lg:block md:me-20 lg:me-70">
                     Bernardo Guedes
                 </a>
 
                 {/* Navegação desktop */}
-                <div className="hidden items-center gap-5 md:flex">
+                <div className="hidden items-center gap-5 lg:flex">
                     <ul className="flex items-center gap-5 text-xs">
                         {links.map((link) => (
                             <li key={link.href}>
@@ -44,12 +44,12 @@ function Header() {
                         <Languages size={20} />
                         <ThemeToggle />
                         <a
-                        href="#resume"
-                        className="flex items-center gap-2 rounded-2xl text-[#29d6b9] bg-[#29d6b9]/10 hover:text-text-button hover:bg-bg-button border-1 border-[#29d6b9] px-3 py-[5px] text-xs font-semibold transition-colors hover:bg-teal-300"
-                    >
-                        <FileUser  size={15}/>
-                        Resume
-                    </a>
+                            href="#resume"
+                            className="flex items-center gap-2 rounded-2xl text-turquesa bg-turquesa/10 hover:text-text-button hover:bg-bg-button border- border-turquesa px-3 py-1.25 text-xs font-semibold transition-colors"
+                        >
+                            <FileUser  size={15}/>
+                            Resume
+                        </a>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@ function Header() {
                 <button
                     type="button"
                     onClick={toggleMenu}
-                    className="rounded-lg p-1 text-title transition-colors hover:bg-white/5 md:hidden"
+                    className="rounded-lg p-1 text-title transition-colors hover:bg-white/5 lg:hidden"
                     aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
                     aria-expanded={isOpen}>
                     {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -66,7 +66,7 @@ function Header() {
 
             {/* Painel do menu mobile */}
             <div
-                className={`absolute right-0 top-full mt-3 w-full overflow-hidden rounded-2xl border border-white/10 bg-card/95 p-4 text-(--text) shadow-brand backdrop-blur-xl transition-all duration-300 md:hidden 
+                className={`absolute right-0 top-full mt-3 w-full overflow-hidden rounded-2xl border border-white/10 bg-card/95 p-4 text-(--text) shadow-brand backdrop-blur-xl transition-all duration-300 lg:hidden 
                 ${isOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0 pointer-events-none'}`}>
                 
                 <nav>
