@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
+import Skills from "./pages/Skills";
 
 function App() {
     return (
@@ -14,6 +15,9 @@ function App() {
 
                 {/*Página Experience */}
                 <Experience/>
+
+                {/*Página Skills */}
+                <Skills/>
 
             </body>
         </>
