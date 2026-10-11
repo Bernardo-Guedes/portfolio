@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import { ScrollHorizontal } from "./components/MotiomScrollHorizontal";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
@@ -15,6 +16,9 @@ function App() {
 
                 {/*Página Experience */}
                 <Experience/>
+
+                {/*Página Projects */}
+                <ScrollHorizontal/>
 
                 {/*Página Skills */}
                 <Skills/>
