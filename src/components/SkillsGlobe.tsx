@@ -19,7 +19,7 @@
  * ficam numa única camada HTML reposicionada a cada frame (mesmo visual, sem o bug).
  */
 
-import { useLayoutEffect, useMemo, useRef, type CSSProperties, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type RefObject } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
@@ -200,6 +200,20 @@ export default function SkillsGlobe({
 }: Props) {
   const container = useRef<HTMLDivElement>(null!);
   const items = useRef<(HTMLDivElement | null)[]>([]);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = container.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -210,7 +224,7 @@ export default function SkillsGlobe({
       <style>{CSS}</style>
 
       {/* eventSource = container → arrastar em cima de um ícone também gira o globo */}
-      <Canvas eventSource={container} camera={{ position: [0, 0, 9], fov: 50 }} dpr={[1, 1.5]}>
+      <Canvas frameloop={visible ? "always" : "never"} eventSource={container} camera={{ position: [0, 0, 9], fov: 50 }} dpr={[1, 1.5]}>
         <fog attach="fog" args={[fogColor, 10, 25]} />
         <FitCamera radius={radius * 1.2} />
         <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>

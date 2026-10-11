@@ -4,7 +4,7 @@ import SkillsGlobe from "../components/SkillsGlobe";
 function Skills(){
     return (
         <div className="mt-15 xl:mt-0 xl:flex gap-3">
-            <div className="xl:sticky xl:top-40 xl:self-start xl:shrink-0 xl:mt-20 xl:pe-40">
+            <div className="xl:shrink-0 xl:mt-20 xl:pe-40">
                 <Card 
                     title1="Technical" 
                     title2="Stack" 

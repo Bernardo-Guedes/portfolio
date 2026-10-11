@@ -1,13 +1,14 @@
 import Header from "./components/Header";
 import { ScrollHorizontal } from "./components/MotiomScrollHorizontal";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
 
 function App() {
     return (
         <>
-            <body className="bg-(--bg)">
+            <div className="min-h-screen bg-bg">
                 {/*Cabeçalho */}
                 <Header />
 
@@ -23,7 +24,10 @@ function App() {
                 {/*Página Skills */}
                 <Skills/>
 
-            </body>
+                {/*Página Contact */}
+                <Contact/>
+
+            </div>
         </>
     );
 }

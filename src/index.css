@@ -3,17 +3,28 @@
 @theme {
   --color-text: var(--text);
   --color-title: var(--title);
+  --color-ntitle: var(--ntitle);
   --color-text-button: var(--text-button);
   --color-bg-button: var(--bg-button);
   --color-bg: var(--bg);
   --color-card-bg: var(--card-bg);
   --shadow-brand: var(--brand-shadow);
   --color-turquesa: #29d6b9;
+  --color-popover: var(--card-bg);
+  --color-popover-foreground: var(--title);
+  --color-muted-foreground: var(--text);
+  --color-accent: var(--bg-button);
+  --color-accent-foreground: var(--text-button);
+  --color-input: color-mix(in srgb, var(--text) 30%, transparent);
+  --color-ring: #29d6b9;
+  --color-border: color-mix(in srgb, var(--text) 20%, transparent);
+  --color-destructive: #ef4444;
 }
 
 :root {
   --text: #000;
   --title: #000;
+  --ntitle: #fff;
   --text-button: #fff;
   --bg-button: #29d6b9;
   --bg: #fff;
@@ -24,9 +35,38 @@
 .dark {
   --text: #8491A8;
   --title: #fff;
+  --ntitle: #000;
   --text-button: #000;
   --bg-button: #29d6b9;
   --bg: #090E1A;
   --card-bg: #0B0F1C;
   --brand-shadow: 0 15px 40px -5px rgba(13, 51, 54, 0.9), 0 8px 10px -6px rgba(13, 51, 54, 0.1);
+}
+
+body { background: var(--bg); }
+
+/* Scrollbar personalizada para o textarea */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-turquesa) transparent;
+}
+
+/* Chrome, Edge e Safari */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-turquesa);
+    border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-turquesa);
+    opacity: 0.8;
 }
