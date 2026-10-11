@@ -50,23 +50,34 @@ body { background: var(--bg); }
     scrollbar-width: thin;
     scrollbar-color: var(--color-turquesa) transparent;
 }
-
 /* Chrome, Edge e Safari */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
     margin-block: 8px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: var(--color-turquesa);
     border-radius: 999px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-turquesa);
     opacity: 0.8;
+}
+
+
+/* Remove o fundo padrão do Chrome no autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  transition: background-color 600000s 0s, color 600000s 0s;
 }

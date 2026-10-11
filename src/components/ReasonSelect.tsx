@@ -7,17 +7,22 @@ import {
   SelectValue,
 } from "../components/SelectDemo"
 
+interface ReasonSelectProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
 const reasons = [
   { value: "hiring", label: "Hiring", icon: Briefcase },
   { value: "collaboration", label: "Collaboration", icon: Users },
   { value: "other", label: "Other", icon: MessageSquare },
 ]
 
-function ReasonSelect() {
+function ReasonSelect({ value, onChange }: ReasonSelectProps) {
   return (
-    <div>
+    <div className="mb-5">
       <label className="block text-[10px] text-text font-medium mb-1">REASON</label>
-      <Select defaultValue="hiring">
+      <Select defaultValue="hiring" value={value} onValueChange={(v) => v && onChange(v)}>
         <SelectTrigger>
           <SelectValue>
             {(value) => {
