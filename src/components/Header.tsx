@@ -24,7 +24,7 @@ function Header() {
         <header className="fixed top-0 left-1/2 -translate-x-1/2 z-1000 w-[calc(100%-2rem)] lg:max-w-max ">
 
             {/* Navbar principal */}
-            <nav className="relative mt-5 flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-card/70 px-5 py-3 text-(--text) shadow-brand backdrop-blur-md transition-all duration-300">
+            <nav className="relative mt-5 flex items-center justify-between gap-3 rounded-3xl border border-white/10 px-5 py-3 text-(--text) shadow-brand backdrop-blur-md transition-all duration-300">
                 <img src={logoImg} alt="Logo" className="h-6 w-6 shrink-0"/>
                 <a  href="#home"
                     className="hidden whitespace-nowrap text-sm font-semibold text-title lg:block md:me-20 lg:me-70">
@@ -69,7 +69,7 @@ function Header() {
 
             {/* Painel do menu mobile */}
             <div
-                className={`absolute right-0 top-full mt-3 w-full overflow-hidden rounded-2xl border border-white/10 bg-card/95 p-4 text-(--text) shadow-brand backdrop-blur-xl transition-all duration-300 lg:hidden 
+                className={`absolute right-0 top-full mt-3 w-full overflow-hidden rounded-2xl border border-white/10 bg-card-bg/95 p-4 text-(--text) shadow-brand backdrop-blur-xl transition-all duration-300 lg:hidden 
                 ${isOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0 pointer-events-none'}`}>
                 
                 <nav>

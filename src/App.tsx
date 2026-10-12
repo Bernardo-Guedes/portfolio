@@ -1,3 +1,5 @@
+import { ScrollProgress } from "./components/ScrollProgress"
+import SplashCursor from "./components/SplashCursor";
 import Header from "./components/Header";
 import { ScrollHorizontal } from "./components/MotiomScrollHorizontal";
 import About from "./pages/About";
@@ -9,27 +11,54 @@ import Resume from "./pages/Resume";
 function App() {
     return (
         <>
-            <div className="min-h-screen bg-bg">
+            <div className="relative isolate min-h-screen bg-bg">
+
+                <SplashCursor
+                    DENSITY_DISSIPATION={3}
+                    VELOCITY_DISSIPATION={2.5}
+                    PRESSURE={0.15}
+                    CURL={0}
+                    SPLAT_RADIUS={0.15}
+                    SPLAT_FORCE={5000}
+                    COLOR_UPDATE_SPEED={5}
+                    SHADING
+                    RAINBOW_MODE={false}
+                    COLOR="#1fb89c"
+                />
+
                 {/*Cabeçalho */}
+                <ScrollProgress />
                 <Header />
 
                 {/*Página About */}
-                <About />
+                <section id="about" className="scroll-mt-30">
+                    <About />
+                </section>
 
                 {/*Página Experience */}
-                <Experience/>
+                <section id="experience" className="scroll-mt-30">
+                    <Experience/>
+                </section>
 
                 {/*Página Projects */}
-                <ScrollHorizontal/>
+                <section id="projects">
+                    <ScrollHorizontal/>
+                </section>
 
                 {/*Página Skills */}
-                <Skills/>
+                <section id="skills" className="scroll-mt-15">
+                    <Skills/>
+                </section>
 
                 {/*Página Resume */}
-                <Resume/>
+                <section id="resume">
+                    <Resume/>
+                </section>
 
                 {/*Página Contact */}
-                <Contact/>
+                <section id="contact" className="scroll-mt-30">
+                    <Contact/>
+                </section>
 
             </div>
         </>
