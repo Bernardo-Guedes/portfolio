@@ -57,7 +57,7 @@ function App() {
                 </section>
 
                 {/*Página Resume */}
-                <section id="resume">
+                <section id="resume"className="scroll-mt-20" >
                     <Resume/>
                 </section>
 
