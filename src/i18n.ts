@@ -13,6 +13,17 @@ const resources = {
         curriculo: "Currículo" 
       },
 
+      inicial:{
+        titulo1: "Desenvolvedor",
+        titulo2: "Full Stack",
+        texto: "Atuo na área de desenvolvimento de software que transforma ideias em sistemas reais: criando aplicações, explorando novas tecnologias e aprimorando continuamente minhas habilidades como engenheiro de software.",
+        stat1: "MEDALISTA OLÍMPICO - OLIMPÍADAS DE MATEMÁTICA",
+        stat2: "MONITOR ACADÊMICO - MATEMÁTICA & COMPUTABILIDADE",
+        stat3: "PROJETOS PESSOAIS - DO DESENVOLVIMENTO WEB BÁSICO AO REACT & SPRING BOOT",
+        stat4: "FERRAMENTAS & TECNOLOGIAS - HTML, CSS, JS, JAVA, SPRING BOOT, PYTHON...",
+        tag: "Disponível para novas oportunidades"
+      },
+
       sobre: {
         tag:"Perfil",
         titulo: "Sobre",
@@ -131,6 +142,17 @@ const resources = {
         ferramentas: "Stack",
         contato: "Contact",
         curriculo: "Resume" 
+      },
+
+      inicial:{
+        titulo1: "Full Stack",
+        titulo2: "Developer",
+        texto: "I work on the part of software development that turns ideas into real systems: building applications, exploring new technologies, and continuously improving my skills as a software engineer.",
+        stat1: "OLYMPIC MEDALIST - MATHEMATICS OLYMPIADS",
+        stat2: "TEACHING ASSISTANT - MATHEMATICS & COMPUTABILITY",
+        stat3: "PERSONAL PROJECTS - FROM VANILLA WEB TO REACT & SPRING BOOT",
+        stat4: "TECHNOLOGIES & STACKS - HTML, CSS, JS, JAVA, SPRING BOOT, PYTHON...",
+        tag: "Available for new opportunities"
       },
 
       sobre: {

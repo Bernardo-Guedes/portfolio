@@ -25,7 +25,9 @@ function Header() {
 
             {/* Navbar principal */}
             <nav className="relative mt-5 flex items-center justify-between gap-3 rounded-3xl border border-white/10 px-5 py-3 text-(--text) shadow-brand backdrop-blur-md transition-all duration-300">
-                <img src={logoImg} alt="Logo" className="h-6 w-6 shrink-0"/>
+                <a href="#home">
+                    <img src={logoImg} alt="Logo" className="h-6 w-6 shrink-0 object-contain"/>
+                </a>
                 <a  href="#home"
                     className="hidden whitespace-nowrap text-sm font-semibold text-title lg:block md:me-20 lg:me-70">
                     Bernardo Guedes

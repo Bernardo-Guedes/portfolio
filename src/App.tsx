@@ -2,6 +2,7 @@ import { ScrollProgress } from "./components/ScrollProgress"
 import SplashCursor from "./components/SplashCursor";
 import Header from "./components/Header";
 import { ScrollHorizontal } from "./components/MotiomScrollHorizontal";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
@@ -29,6 +30,11 @@ function App() {
                 {/*Cabeçalho */}
                 <ScrollProgress />
                 <Header />
+
+                {/*Página Home */}
+                <section id="home" className="scroll-mt-30">
+                    <Home />
+                </section>
 
                 {/*Página About */}
                 <section id="about" className="scroll-mt-30">
