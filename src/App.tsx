@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
+import Resume from "./pages/Resume";
 
 function App() {
     return (
@@ -23,6 +24,9 @@ function App() {
 
                 {/*Página Skills */}
                 <Skills/>
+
+                {/*Página Resume */}
+                <Resume/>
 
                 {/*Página Contact */}
                 <Contact/>

@@ -9,42 +9,44 @@ import pyArenaLogo from "../assets/images/logo_champions_pyarena.png"
 import pyArenaPrint from "../assets/images/print_champions_pyarena.png"
 import radioPrint from "../assets/images/print_radiobrowser.png"
 import radioLogo from "../assets/images/logo_radiobrowser.png"
-
-const items = [
-  {
-    id: 1,
-    title: "Olympic Conscience",
-    image: olympicPrint,
-    logoImage: olympicLogo,
-    tools: ["HTML 5", "CSS 3", "JavaScript"],
-    iconTools: ["devicon-html5-plain", "devicon-css3-plain", "devicon-javascript-plain"],
-    gitHubUrl: "https://github.com/Bernardo-Guedes/olympic-conscience",
-    description: "Olympic Conscience gathers important information about scientific Olympiads in a news hub, while also providing access to study-oriented content and enabling user interaction. The platform also fosters the sharing of experiences and healthy competition through a ranking system based on active community participation."
-  },
-  {
-    id: 2,
-    title: "Champions Of The PyArena",
-    image: pyArenaPrint,
-    logoImage: pyArenaLogo,
-    tools: ["Python", "Pygame"],
-    iconTools: ["devicon-python-plain", "devicon-python-plain"],
-    gitHubUrl: "https://github.com/Bernardo-Guedes/ChampionsPyArena",
-    description: "Champions of the Py Arena is a local two-player fighting game in which each participant controls a character within an arena. The goal is to defeat the opponent by reducing their health bar to zero through attacks and strategic movement."
-
-  },
-  {
-    id: 3,
-    title: "Radio/Clima Browser",
-    image: radioPrint,
-    logoImage: radioLogo,
-    tools: ["Spring Boot", "Thymeleaf"],
-    iconTools: ["devicon-spring-plain", "devicon-thymeleaf-plain"],
-    gitHubUrl: "https://github.com/Bernardo-Guedes/spring-boot/tree/main/RadioBrowserAPI",
-    description: "RadioBrowserAPI is a web application built with Spring Boot that allows users to explore radio stations across Brazilian state capitals, check local weather conditions for each city, and discover new stations. The platform integrates external APIs, features secure user authentication and registration, and allows users to save their favorite radio stations for quick access. With an intuitive interface and personalized features, it provides a convenient way to discover radio stations and stay informed about local weather."
-  }
-]
+import { useTranslation } from "react-i18next";
 
 export function ScrollHorizontal() {
+  const { t } = useTranslation();
+  const items = [
+    {
+      id: 1,
+      title: t("projetos.titulo_projeto1"),
+      image: olympicPrint,
+      logoImage: olympicLogo,
+      tools: ["HTML 5", "CSS 3", "JavaScript"],
+      iconTools: ["devicon-html5-plain", "devicon-css3-plain", "devicon-javascript-plain"],
+      gitHubUrl: "https://github.com/Bernardo-Guedes/olympic-conscience",
+      description: t("projetos.descricao_projeto1")
+    },
+    {
+      id: 2,
+      title: t("projetos.titulo_projeto2"),
+      image: pyArenaPrint,
+      logoImage: pyArenaLogo,
+      tools: ["Python", "Pygame"],
+      iconTools: ["devicon-python-plain", "devicon-python-plain"],
+      gitHubUrl: "https://github.com/Bernardo-Guedes/ChampionsPyArena",
+      description: t("projetos.descricao_projeto2")
+
+    },
+    {
+      id: 3,
+      title: t("projetos.titulo_projeto3"),
+      image: radioPrint,
+      logoImage: radioLogo,
+      tools: ["Spring Boot", "Thymeleaf"],
+      iconTools: ["devicon-spring-plain", "devicon-thymeleaf-plain"],
+      gitHubUrl: "https://github.com/Bernardo-Guedes/spring-boot/tree/main/RadioBrowserAPI",
+      description: t("projetos.descricao_projeto3")
+    }
+  ]
+
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const maxX = useRef(0)
@@ -87,7 +89,7 @@ export function ScrollHorizontal() {
         <div ref={sectionRef} className="relative">
             <div className="flex flex-col gap-10 xl:sticky xl:top-0 xl:h-screen xl:items-start xl:justify-center xl:overflow-hidden">
                 <h1 className="w-full text-center text-4xl font-bold text-title mt-15">
-                    Featured <span className="text-turquesa">Projects</span>
+                    {t("projetos.titulo1")} <span className="text-turquesa">{t("projetos.titulo2")}</span>
                 </h1>
                 <motion.div
                     ref={trackRef}

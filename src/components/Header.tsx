@@ -1,20 +1,23 @@
 
 import { useState } from 'react';
-import { Languages, Menu, X, FileUser } from 'lucide-react';
+import { Menu, X, FileUser } from 'lucide-react';
 import ThemeToggle from "../components/ThemeToggle";
 import logoImg from "../assets/images/logo.png";
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useTranslation } from "react-i18next";
 
 function Header() {
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
     const closeMenu = () => setIsOpen(false);
     
     const links = [
-        { label: 'Sobre', href: '#about' },
-        { label: 'Experiência', href: '#experience' },
-        { label: 'Projetos', href: '#projects' },
-        { label: 'Ferramentas', href: '#skills' },
-        { label: 'Contato', href: '#contact' },
+        { label: t("menu.sobre"), href: '#about' },
+        { label: t("menu.experiencia"), href: '#experience' },
+        { label: t("menu.projetos"), href: '#projects' },
+        { label: t("menu.ferramentas"), href: '#skills' },
+        { label: t("menu.contato"), href: '#contact' },
     ];
 
     return (
@@ -41,14 +44,14 @@ function Header() {
                         ))}
                     </ul>
                     <div className="flex items-center gap-5">
-                        <Languages size={20} />
+                        <LanguageSwitcher />
                         <ThemeToggle />
                         <a
                             href="#resume"
                             className="flex items-center gap-2 rounded-2xl text-turquesa bg-turquesa/10 hover:text-text-button hover:bg-bg-button border- border-turquesa px-3 py-1.25 text-xs font-semibold transition-colors"
                         >
                             <FileUser  size={15}/>
-                            Resume
+                            {t("menu.curriculo")}
                         </a>
                     </div>
                 </div>
@@ -89,7 +92,7 @@ function Header() {
                 {/* Ações inferiores */}
                 <div className="flex items-center justify-between px-1 py-1">
                     <div className="flex items-center gap-4">
-                        <Languages size={20} />
+                        <LanguageSwitcher />
                         <ThemeToggle />
                     </div>
 

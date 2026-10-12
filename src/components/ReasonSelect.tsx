@@ -1,4 +1,5 @@
 import { Briefcase, Users, MessageSquare } from "lucide-react"
+import { useTranslation } from "react-i18next";
 import {
   Select,
   SelectContent,
@@ -12,16 +13,19 @@ interface ReasonSelectProps {
   onChange: (value: string) => void;
 }
 
-const reasons = [
-  { value: "hiring", label: "Hiring", icon: Briefcase },
-  { value: "collaboration", label: "Collaboration", icon: Users },
-  { value: "other", label: "Other", icon: MessageSquare },
-]
-
 function ReasonSelect({ value, onChange }: ReasonSelectProps) {
+  const { t } = useTranslation();
+
+  const reasons = [
+    { value: "hiring", label: t("contatos.select1"), icon: Briefcase },
+    { value: "collaboration", label: t("contatos.select2"), icon: Users },
+    { value: "other", label: t("contatos.select3"), icon: MessageSquare },
+  ]
+
+
   return (
     <div className="mb-5">
-      <label className="block text-[10px] text-text font-medium mb-1">REASON</label>
+      <label className="block text-[10px] text-text font-medium mb-1">{t("contatos.label_motivo")}</label>
       <Select defaultValue="hiring" value={value} onValueChange={(v) => v && onChange(v)}>
         <SelectTrigger>
           <SelectValue>
