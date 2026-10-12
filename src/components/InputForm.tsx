@@ -29,7 +29,7 @@ function InputForm({ title, placeholder, name, value, onChange, type="text", mul
                         disabled={disabled}
                         rows={5}
                         onChange={(e) => onChange(e.target.value)}
-                        className={`${fieldClass} resize-none py-1`}
+                        className={`${fieldClass} resize-none py-1 custom-scrollbar`}
                     />
                 ) : (
                     <input

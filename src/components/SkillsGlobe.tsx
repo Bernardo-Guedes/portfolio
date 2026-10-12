@@ -30,6 +30,7 @@ export type Skill = {
   label: string;
   /** sobrescreve a cor da marca (útil p/ ícones pretos em fundo escuro) */
   color?: string;
+  colorLight?: string;
 };
 
 type Props = {
@@ -57,9 +58,17 @@ const DEFAULT_SKILLS: Skill[] = [
   { icon: "devicon-supabase-plain", label: "Supabase" },
   { icon: "devicon-docker-plain", label: "Docker" },
   { icon: "devicon-git-plain", label: "Git" },
-  { icon: "devicon-github-original", label: "GitHub", color: "#fff" },
+  { icon: "devicon-github-original", label: "GitHub", color: "#fff", colorLight: "#181717" },
   { icon: "devicon-python-plain", label: "Python" },
   { icon: "devicon-java-plain", label: "Java" },
+  { icon: "devicon-spring-original", label: "Spring Boot" },
+  { icon: "devicon-thymeleaf-plain", label: "Thymeleaf" },
+  { icon: "devicon-json-plain", label: "JSON" },
+  { icon: "devicon-postgresql-plain", label: "PostgreSQL" },
+  { icon: "devicon-cplusplus-plain", label: "C++" },
+  { icon: "devicon-maven-plain", label: "Maven" },
+  { icon: "devicon-vscode-plain", label: "VS Code" },
+  { icon: "devicon-mongodb-plain", label: "MongoDB" },
   { icon: "devicon-figma-plain", label: "Figma" }
 ];
 
@@ -83,20 +92,39 @@ const _camDir = new THREE.Vector3();
 const _ndc = new THREE.Vector3();
 const _view = new THREE.Vector3();
 
+function useIsDark() {
+  const [dark, setDark] = useState(() =>
+    document.documentElement.classList.contains("dark")
+  );
+  useEffect(() => {
+    const el = document.documentElement;
+    const obs = new MutationObserver(() => setDark(el.classList.contains("dark")));
+    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, []);
+  return dark;
+}
+
 function Globe({
   count,
   radius,
   accent,
   items,
+  dark
 }: {
   count: number;
   radius: number;
   accent: string;
   items: RefObject<(HTMLDivElement | null)[]>;
+  dark: boolean;
 }) {
   const group = useRef<THREE.Group>(null);
   const points = useMemo(() => fibonacciSphere(count, radius), [count, radius]);
   const shell = radius * 0.85;
+
+  const theme = dark
+  ? { line: accent,    front: 0.08, back: 0.02, core: "#000",  coreOp: 0.2,  haloOp: 0.05, halo: THREE.AdditiveBlending }
+  : { line: "#0f9f8a", front: 0.45, back: 0.12, core: accent,  coreOp: 0.05, haloOp: 0.12, halo: THREE.NormalBlending };
 
   useFrame((state, delta) => {
     const g = group.current;
@@ -135,30 +163,21 @@ function Globe({
 
   return (
     <group ref={group}>
-      {/* grade: frente mais visível, fundo bem fraco */}
       <mesh>
         <icosahedronGeometry args={[shell, 2]} />
-        <meshBasicMaterial color={accent} wireframe transparent opacity={0.08} />
+        <meshBasicMaterial color={theme.line} wireframe transparent opacity={theme.front} />
       </mesh>
       <mesh>
         <icosahedronGeometry args={[shell, 2]} />
-        <meshBasicMaterial color={accent} wireframe transparent opacity={0.02} side={THREE.BackSide} />
+        <meshBasicMaterial color={theme.line} wireframe transparent opacity={theme.back} side={THREE.BackSide} />
       </mesh>
-      {/* núcleo escuro */}
       <mesh>
         <sphereGeometry args={[shell * 0.98, 32, 32]} />
-        <meshBasicMaterial color="#000" transparent opacity={0.2} side={THREE.DoubleSide} />
+        <meshBasicMaterial color={theme.core} transparent opacity={theme.coreOp} side={THREE.DoubleSide} />
       </mesh>
-      {/* halo (blending aditivo) */}
       <mesh>
         <sphereGeometry args={[shell * 1.035, 32, 32]} />
-        <meshBasicMaterial
-          color={accent}
-          transparent
-          opacity={0.05}
-          blending={THREE.AdditiveBlending}
-          side={THREE.BackSide}
-        />
+        <meshBasicMaterial color={accent} transparent opacity={theme.haloOp} blending={theme.halo} side={THREE.BackSide} />
       </mesh>
     </group>
   );
@@ -184,7 +203,7 @@ const CSS = `
 .skills-globe__layer{position:absolute;inset:0;pointer-events:none}
 .skills-globe__item{position:absolute;left:0;top:0;opacity:0;display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px;user-select:none;cursor:pointer}
 .skills-globe__item i{font-size:${ICON_PX}px;line-height:1;transition:transform .3s,filter .3s}
-.skills-globe__item span{font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap;color:#9ca3af;opacity:.8;transition:color .3s,opacity .3s}
+.skills-globe__item span{font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap;color:var(--globe-label);opacity:.9;transition:color .3s,opacity .3s}
 .skills-globe__item:hover i{transform:scale(1.12);filter:drop-shadow(0 0 14px var(--globe-accent))}
 .skills-globe__item:hover span{color:var(--globe-accent);opacity:1}
 `;
@@ -194,7 +213,7 @@ export default function SkillsGlobe({
   accent = "#29d6b9",
   radius = 3.3,
   height = 600,
-  fogColor = "#111111",
+  fogColor,
   className,
   style,
 }: Props) {
@@ -215,20 +234,23 @@ export default function SkillsGlobe({
     return () => observer.disconnect();
   }, []);
 
+  const dark = useIsDark();
+  const fog = fogColor ?? (dark ? "#090E1A" : "#ffffff");
+
   return (
     <div
       ref={container}
       className={["skills-globe", className].filter(Boolean).join(" ")}
-      style={{ height, ...({ "--globe-accent": accent } as CSSProperties), ...style }}
+      style={{ height, ...({ "--globe-accent": accent, "--globe-label": dark ? "#9ca3af" : "#475569" } as CSSProperties), ...style }}
     >
       <style>{CSS}</style>
 
       {/* eventSource = container → arrastar em cima de um ícone também gira o globo */}
       <Canvas frameloop={visible ? "always" : "never"} eventSource={container} camera={{ position: [0, 0, 9], fov: 50 }} dpr={[1, 1.5]}>
-        <fog attach="fog" args={[fogColor, 10, 25]} />
+        <fog attach="fog" args={[fog, 10, 25]} />
         <FitCamera radius={radius * 1.2} />
         <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
-          <Globe count={skills.length} radius={radius} accent={accent} items={items} />
+          <Globe count={skills.length} radius={radius} accent={accent} items={items} dark={dark} />
         </Float>
         <OrbitControls
           enableZoom={false}
@@ -241,18 +263,21 @@ export default function SkillsGlobe({
       </Canvas>
 
       <div className="skills-globe__layer">
-        {skills.map((skill, i) => (
-          <div
-            key={`${skill.label}-${i}`}
-            ref={(el) => {
-              items.current[i] = el;
-            }}
-            className="skills-globe__item"
-          >
-            <i className={`${skill.icon} colored`} style={skill.color ? { color: skill.color } : undefined} />
-            <span>{skill.label}</span>
-          </div>
-        ))}
+        {skills.map((skill, i) => {
+          const c = dark ? skill.color : (skill.colorLight ?? skill.color);
+          return (
+            <div
+              key={`${skill.label}-${i}`}
+              ref={(el) => {
+                items.current[i] = el;
+              }}
+              className="skills-globe__item"
+            >
+              <i className={`${skill.icon} colored`} style={c ? { color: c } : undefined} />
+              <span>{skill.label}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

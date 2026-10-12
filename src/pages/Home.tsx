@@ -7,9 +7,9 @@ function Home(){
     return(
         <div className="flex items-center gap-10 justify-center lg:justify-between lg:ms-20  mt-25 lg:mt-30 mx-5 lg:mx-0 xl:ms-50">
             <div className="max-w-140">
-                <div className="flex items-center gap-1 mb-8 border border-turquesa/20 max-w-max px-3 py-1 rounded-xl">
+                <div className="flex items-center gap-1 mb-8 border border-turquesa/30 max-w-max px-3 py-1 rounded-xl">
                     <span className="h-1 w-1 rounded-full bg-turquesa/80"></span>
-                    <p className="text-xs text-turquesa/80">{t("inicial.tag")}</p>
+                    <p className="text-xs text-turquesa/80 font-medium">{t("inicial.tag")}</p>
                 </div>
                 <h1 className="text-title text-5xl font-bold">Bernardo Guedes</h1>
                 <div className="flex gap-2 text-2xl mt-2 font-medium"><h2 className="text-text">{t("inicial.titulo1")}</h2><h2 className="text-turquesa">{t("inicial.titulo2")}</h2></div>

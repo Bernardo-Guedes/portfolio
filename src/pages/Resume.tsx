@@ -68,10 +68,10 @@ function Resume(){
 
                 {/*Botões de zoom*/}
                 <div className="mb-4 md:mb-0 flex gap-2 items-center text-white">
-                    <button onClick={() => mudarZoom(-ZOOM_PASSO)}  disabled={zoom <= ZOOM_MIN} aria-label={t("curriculo.zoom_menos")}  title={t("curriculo.zoom_menos")} className="cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><ZoomOut size={18}/></button>
+                    <button onClick={() => mudarZoom(-ZOOM_PASSO)}  disabled={zoom <= ZOOM_MIN} aria-label={t("curriculo.zoom_menos")}  title={t("curriculo.zoom_menos")} className="text-title cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><ZoomOut size={18}/></button>
                     <span className="text-md text-text font-medium">{Math.round(zoom * 100)}%</span>
-                    <button onClick={() => mudarZoom(ZOOM_PASSO)}  disabled={zoom >= ZOOM_MAX} aria-label={t("curriculo.zoom_mais")}  title={t("curriculo.zoom_mais")} className="cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><ZoomIn size={18}/></button>
-                    <button onClick={() => setZoom(1)}  disabled={zoom === 1} aria-label={t("curriculo.zoom_ajustar")}  title={t("curriculo.zoom_ajustar")} className="cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><Maximize2 size={18}/></button>
+                    <button onClick={() => mudarZoom(ZOOM_PASSO)}  disabled={zoom >= ZOOM_MAX} aria-label={t("curriculo.zoom_mais")}  title={t("curriculo.zoom_mais")} className="text-title cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><ZoomIn size={18}/></button>
+                    <button onClick={() => setZoom(1)}  disabled={zoom === 1} aria-label={t("curriculo.zoom_ajustar")}  title={t("curriculo.zoom_ajustar")} className="text-title cursor-pointer hover:bg-turquesa/20 border rounded-md border-turquesa bg-turquesa/10 p-1"><Maximize2 size={18}/></button>
                 </div>
 
                 <div className="md:flex items-center gap-3">
@@ -82,7 +82,7 @@ function Resume(){
 
             <div 
                 ref={areaRef}
-                className="flex flex-col items-center gap-6 p-6 max-h-[80vh] overflow-auto bg-black/40 rounded-b-2xl">
+                className="custom-scrollbar flex flex-col items-center gap-6 p-6 max-h-[80vh] overflow-auto bg-black/40 rounded-b-2xl">
                 {carregando && (
                 <p className="cv-aviso" role="status">
                     <span className="cv-spinner" aria-hidden="true" />
