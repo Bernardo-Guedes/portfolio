@@ -7,14 +7,13 @@ function Experience(){
     const { t } = useTranslation();
     return (
         <div className="mt-15 xl:mt-40 xl:flex gap-3">
-            <div className="xl:sticky xl:top-40 xl:self-start">
-                <Card 
-                    title1={t("experiencia.titulo1")} 
-                    title2={t("experiencia.titulo2")} 
-                    tag={t("experiencia.tag")} 
-                    description={t("experiencia.texto")} 
-                />
-            </div>
+            <Card 
+                title1={t("experiencia.titulo1")} 
+                title2={t("experiencia.titulo2")} 
+                tag={t("experiencia.tag")} 
+                description={t("experiencia.texto")} 
+                sticky
+            />
 
             <Timeline>
                 <TimelineItem>
