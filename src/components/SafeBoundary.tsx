@@ -1,12 +1,43 @@
-// components/SafeBoundary.tsx
-import { Component, type ReactNode } from "react";
+import { Component, type ErrorInfo, type ReactNode } from "react";
+
+interface SafeBoundaryProps {
+    children: ReactNode;
+    fallback?: ReactNode;
+}
+
+interface SafeBoundaryState {
+    hasError: boolean;
+}
 
 export default class SafeBoundary extends Component<
-  { children: ReactNode; fallback?: ReactNode },
-  { failed: boolean }
+    SafeBoundaryProps,
+    SafeBoundaryState
 > {
-  state = { failed: false };
-  static getDerivedStateFromError() { return { failed: true }; }
-  componentDidCatch(e: unknown) { console.error(e); }
-  render() { return this.state.failed ? (this.props.fallback ?? null) : this.props.children; }
+    state: SafeBoundaryState = {
+        hasError: false,
+    };
+
+    static getDerivedStateFromError(): SafeBoundaryState {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, info: ErrorInfo) {
+        console.error("Erro capturado pelo SafeBoundary:", error);
+        console.error(
+            "Pilha de componentes:",
+            info.componentStack
+        );
+
+        if (error.stack) {
+            console.error("Pilha do erro:", error.stack);
+        }
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return this.props.fallback ?? null;
+        }
+
+        return this.props.children;
+    }
 }
