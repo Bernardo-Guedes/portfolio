@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react"
 import { motion, useScroll, useTransform } from "motion/react"
 import ProjectCard from "./ProjectCard"
-import olympicLogo from "../assets/images/logo_olympic_conscience.png"
-import olympicPrint from "../assets/images/print_olympic_conscience.png"
-import pyArenaLogo from "../assets/images/logo_champions_pyarena.png"
-import pyArenaPrint from "../assets/images/print_champions_pyarena.png"
-import radioPrint from "../assets/images/print_radiobrowser.png"
+import olympicLogo from "../assets/images/logo_olympic_conscience.webp"
+import olympicPrint from "../assets/images/print_olympic_conscience.webp"
+import pyArenaLogo from "../assets/images/logo_champions_pyarena.webp"
+import pyArenaPrint from "../assets/images/print_champions_pyarena.webp"
+import radioPrint from "../assets/images/print_radiobrowser.webp"
 import radioLogo from "../assets/images/logo_radiobrowser.png"
 import { useTranslation } from "react-i18next";
 

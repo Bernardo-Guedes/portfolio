@@ -105,8 +105,14 @@ export default function SplashCursor({
       COLOR
     };
 
-    const { gl, ext } = getWebGLContext(canvas);
-    if (!gl || !ext) return;
+    let ctx: ReturnType<typeof getWebGLContext>;
+    try {
+      ctx = getWebGLContext(canvas);
+    } catch (e) {
+      console.warn("WebGL indisponível", e);
+      return;
+    }
+    const { gl, ext } = ctx;
 
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;

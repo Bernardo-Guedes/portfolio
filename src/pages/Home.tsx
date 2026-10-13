@@ -1,4 +1,4 @@
-import cartaoPerfil from "../assets/images/cartao_perfil.png"
+import cartaoPerfil from "../assets/images/cartao_perfil.webp"
 import { TiltCard } from "../components/PerfilCard";
 import { useTranslation } from "react-i18next";
 

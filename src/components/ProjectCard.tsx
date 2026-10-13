@@ -13,10 +13,10 @@ function ProjectCard({ title, urlLogoImg, urlImg, tools, iconTools, urlGitHub, d
     return(
         <div className="w-full h-full flex flex-col gap-2 rounded-2xl border border-white/10 bg-card-bg/95 p-4 text-text shadow-brand backdrop-blur-xl transition-all duration-300">
             <div className="flex items-center gap-3">   
-                <img src={urlLogoImg} alt={title} className="mt-1 w-10 h-auto" />
+                <img src={urlLogoImg} alt={title} className="mt-1 w-10 h-auto" loading="lazy" decoding="async"/>
                 <h3 className="text-xl text-title font-bold">{title}</h3> 
             </div> 
-            <img src={urlImg} alt={title} className="w-full h-auto object-cover rounded-lg" />
+            <img src={urlImg} alt={title} className="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async"/>
             <div className="flex mt-2 justify-between">
                 <div className="flex gap-1">
                     {tools.map((tool, index) => (

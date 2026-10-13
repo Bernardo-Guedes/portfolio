@@ -9,24 +9,33 @@ import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
 import Resume from "./pages/Resume";
 import Footer from "./components/Footer";
+import SafeBoundary from "./components/SafeBoundary";
 
 function App() {
+    const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     return (
         <>
             <div className="relative isolate min-h-screen bg-bg">
 
-                <SplashCursor
-                    DENSITY_DISSIPATION={3}
-                    VELOCITY_DISSIPATION={2.5}
-                    PRESSURE={0.15}
-                    CURL={0}
-                    SPLAT_RADIUS={0.15}
-                    SPLAT_FORCE={5000}
-                    COLOR_UPDATE_SPEED={5}
-                    SHADING
-                    RAINBOW_MODE={false}
-                    COLOR="#1fb89c"
-                />
+                {/* SplashCursor: somente em dispositivos com mouse */}
+
+                {canHover && (
+                    <SafeBoundary fallback={null}>
+                        <SplashCursor
+                            DENSITY_DISSIPATION={3}
+                            VELOCITY_DISSIPATION={2.5}
+                            PRESSURE={0.15}
+                            CURL={0}
+                            SPLAT_RADIUS={0.15}
+                            SPLAT_FORCE={5000}
+                            COLOR_UPDATE_SPEED={5}
+                            SHADING
+                            RAINBOW_MODE={false}
+                            COLOR="#1fb89c"
+                        />
+                    </SafeBoundary>
+                )}
+                
 
                 {/*Cabeçalho */}
                 <ScrollProgress />
