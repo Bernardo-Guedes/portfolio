@@ -35,7 +35,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      p-label="Alternar tema"
+      aria-label="Alternar tema"
       className="cursor-pointer"
     >
       {theme === "light" ? <Moon /> : <Sun />}

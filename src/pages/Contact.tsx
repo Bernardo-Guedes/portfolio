@@ -21,7 +21,9 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function Contact() {
     
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language.startsWith("en") ? "en" : "pt";
+    const fileUrl = `/cv-${lang}.pdf`;
     const [form, setForm] = useState<FormState>(INITIAL);
     const [errors, setErrors] = useState<Errors>({});
     const [status, setStatus] = useState<Status>("idle");
@@ -86,7 +88,7 @@ function Contact() {
                 <div>
                     <ContactLink Icon="devicon-github-original text-turquesa text-lg" title="GITHUB" text="github.com/Bernardo-Guedes" url="https://github.com/Bernardo-Guedes" />
                 </div>
-                <a>
+                <a href={fileUrl} download={t("curriculo.arquivo")}>
                     <button className="cursor-pointer flex items-center justify-center gap-2 w-full rounded-lg px-3 py-2 md:py-3 text-[12px] text-ntitle font-bold bg-turquesa"><Download size={16}/>{t("contatos.texto_botao1")}</button>
                 </a>
                 <div className="my-3 mt-8 border-t border-white/10" />

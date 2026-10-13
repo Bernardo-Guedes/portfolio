@@ -103,7 +103,7 @@ function Header() {
                         className="flex items-center gap-2 rounded-xl text-text-button bg-bg-button px-4 py-2 text-sm font-semibold transition-colors hover:bg-teal-300"
                     >
                         <FileUser  size={15}/>
-                        Resume
+                        {t("menu.curriculo")}
                     </a>
                 </div>
             </div>

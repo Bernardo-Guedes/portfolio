@@ -1,5 +1,6 @@
 
 import { Briefcase, CalendarDays } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
 interface CardProps {
 title: string;
@@ -10,6 +11,7 @@ topics: string[];
 }
 
 function ExperienceCard({ title, organization, initialDate, finalDate, topics }: CardProps){
+    const { t } = useTranslation();
     return(
         <div className="lg:ms-10 lg:max-w-150 flex flex-col gap-2 rounded-2xl border border-white/10 bg-card-bg/95 p-4 text(--text) shadow-brand backdrop:blur-xl transition-all duration-300">
             
@@ -24,7 +26,7 @@ function ExperienceCard({ title, organization, initialDate, finalDate, topics }:
 
                 {/* Tags EXPERIENCE e DURATION */}
                 <div className="gap-2 mt-2 flex flex-col items-end">
-                    <div className="text-text text-[8px] p-1 rounded-xl border border-text px-2 py-1"><p className="flex items-center gap-1"><Briefcase size={12}/>EXPERIENCE</p></div>
+                    <div className="text-text text-[8px] p-1 rounded-xl border border-text px-2 py-1"><p className="flex items-center gap-1"><Briefcase size={12}/>{t("experiencia.tag_experiencia")}</p></div>
                     <div className="text-text text-[8px] p-1 rounded-xl border border-text px-2 py-1"><p className="flex items-center gap-1"><CalendarDays size={12}/>{initialDate} — {finalDate}</p></div>
                 </div>
 
