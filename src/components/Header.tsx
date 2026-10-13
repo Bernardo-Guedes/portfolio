@@ -39,7 +39,7 @@ function Header() {
                         {links.map((link) => (
                             <li key={link.href}>
                                 <a  href={link.href}
-                                    className="transition-colors hover:text-title">
+                                    className="hover:text-title hover:bg-white/10 hover:p-1.5 hover:rounded-xl transition-all duration-200">
                                     {link.label}
                                 </a>
                             </li>

@@ -136,6 +136,12 @@ const resources = {
         erro: "Algo deu errado. Tente novamente ou envie um e-mail diretamente para mim.",
         sucesso: "Mensagem enviada! Entrarei em contato em breve."
       },
+
+      rodape: {
+        texto: "Aberto a oportunidades em Engenharia de Software, Desenvolvimento Full-Stack, Front-End e Back-End.",
+        copy: "© 2026 Bernardo Guedes · Desenvolvido com React, Vite e Tailwind CSS.",
+        botao: "Baixar currículo"
+      }
     },
   },
   en: {
@@ -272,6 +278,12 @@ const resources = {
         erro: "Something went wrong. Try again or email me directly.",
         sucesso: "Message sent! I'll get back to you soon."
       },
+
+      rodape: {
+        texto: "Open to Software Engineering, Full-Stack Development, Front-End Development, and Back-End Development opportunities.",
+        copy: "© 2026 Bernardo Guedes · Built with React Vite & Tailwind",
+        botao: "Download Resume"
+      }
 
     },
   },

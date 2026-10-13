@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
 import Resume from "./pages/Resume";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -65,6 +66,9 @@ function App() {
                 <section id="contact" className="scroll-mt-30">
                     <Contact/>
                 </section>
+
+                {/*Rodapé */}
+                <Footer/>
 
             </div>
         </>
