@@ -1,6 +1,9 @@
 import Card from "../components/Card";
-import SkillsGlobe from "../components/SkillsGlobe";
 import { useTranslation } from "react-i18next";
+import { lazy, Suspense } from "react";
+import SafeBoundary from "../components/SafeBoundary";
+
+const SkillsGlobe = lazy(() => import("../components/SkillsGlobe"));
 
 function Skills(){
     const { t } = useTranslation();
@@ -15,11 +18,12 @@ function Skills(){
                 />
             </div>
 
-            <SkillsGlobe
-                height="auto"
-                className="mx-auto xl:mx-0"
-                style={{ maxWidth: 600, aspectRatio: "1 / 1" }}
-            />
+            <SafeBoundary fallback={null}>
+                <Suspense fallback={null}>
+                    <SkillsGlobe height="auto" className="mx-auto xl:mx-0"
+                    style={{width: "100%", maxWidth: 600, aspectRatio: "1 / 1" }} />
+                </Suspense>
+            </SafeBoundary>
             
         </div> 
     );

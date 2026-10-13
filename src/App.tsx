@@ -7,9 +7,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Skills from "./pages/Skills";
-import Resume from "./pages/Resume";
 import Footer from "./components/Footer";
 import SafeBoundary from "./components/SafeBoundary";
+import { lazy, Suspense } from "react";
+const Resume = lazy(() => import("./pages/Resume"));
 
 function App() {
     const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -68,7 +69,9 @@ function App() {
 
                 {/*Página Resume */}
                 <section id="resume"className="scroll-mt-20" >
-                    <Resume/>
+                    <SafeBoundary fallback={<p className="text-center text-text">Currículo disponível no botão de download.</p>}>
+                        <Suspense fallback={null}><Resume /></Suspense>
+                    </SafeBoundary>    
                 </section>
 
                 {/*Página Contact */}
